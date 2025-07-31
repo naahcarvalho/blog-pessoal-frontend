@@ -1,69 +1,123 @@
-# React + TypeScript + Vite
+# 📘 Blog Pessoal - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o frontend de um Blog Pessoal desenvolvido com **React**, **TypeScript**, **Vite** e **Tailwind CSS**. O projeto permite o cadastro de usuários, login, criação e exibição de postagens, entre outras funcionalidades. Ideal para praticar conceitos de **componentização**, **rotas protegidas**, **hooks** e **consumo de APIs**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- ⚛️ [React](https://reactjs.org/) — Biblioteca JavaScript para interfaces
+- 📘 [TypeScript](https://www.typescriptlang.org/) — Superset do JavaScript com tipagem
+- ⚡ [Vite](https://vitejs.dev/) — Build tool rápida com suporte a HMR
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) — Framework utilitário para estilização
+- ✅ [ESLint](https://eslint.org/) — Linter para padronizar o código
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
+## 📂 Estrutura de Pastas
+
+```bash
+src/
+├── App.tsx
+├── main.tsx
+├── pages/
+│   ├── Contador/
+│   ├── Home/
+│   ├── Login/
+│   └── Tarefa/
+├── assets/
+│   └── [imagens e ícones]
+├── styles/
+│   └── index.css
+```
+
+---
+
+## ✅ Funcionalidades
+
+- 🔐 Autenticação com token
+- 📝 Cadastro e listagem de tarefas
+- 🏠 Página inicial com boas-vindas
+- 💬 Página de login
+- ⏱️ Componente de contador (exemplo funcional)
+
+---
+
+## ⚙️ Configuração de ESLint com TypeScript
+
+Se deseja aplicar regras mais rigorosas de lint com suporte ao TypeScript, considere o seguinte:
+
+```ts
 export default tseslint.config([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
       ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
       ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
     },
   },
 ])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Para regras específicas do React:
 
-```js
-// eslint.config.js
+```ts
 import reactX from 'eslint-plugin-react-x'
 import reactDom from 'eslint-plugin-react-dom'
 
 export default tseslint.config([
-  globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-      // Enable lint rules for React
       reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
   },
 ])
 ```
+
+---
+
+## 📦 Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/naahcarvalho/blog-pessoal-frontend
+
+# Acesse a pasta do projeto
+cd blog-pessoal-frontend
+
+# Instale as dependências
+yarn install
+
+# Inicie o projeto
+yarn dev
+```
+
+---
+
+## 🌐 Backend
+
+Esse projeto depende do backend:  
+🔗 [Repositório do Blog Pessoal - Backend](https://github.com/naahcarvalho/blog-pessoal-backend)
+
+---
+
+## 💡 Próximos passos
+
+- ✅ Melhorias no layout responsivo  
+- ✍️ Adição de comentários em postagens  
+- 📅 Ordenar tarefas por data
+
+---
+
+## 👩‍💻 Feito por
+
+[Nathalia Carvalho](https://github.com/naahcarvalho) Front-end Developer em transição de carreira e estudante na Generation Brasil.
