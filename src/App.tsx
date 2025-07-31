@@ -1,13 +1,17 @@
 import './App.css'
-import Login from './pages/login/Login'
+import Home from './pages/home/Home'
 
 function App() {
 
   return (
     <>
-      <Login />
+      <Home
+        titulo="Bem-vindo ao seu espaço mágico!"
+        texto="Compartilhe seus pensamentos e aventuras do dia a dia."
+      />
     </>
   )
 }
 
 export default App
+
