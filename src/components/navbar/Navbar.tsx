@@ -1,39 +1,66 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Navbar() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const { handleLogout } = useContext(AuthContext);
 
-    const { handleLogout } = useContext(AuthContext)
+  function logout() {
+    handleLogout();
+    alert("O Usuário foi desconectado com sucesso!");
+    navigate("/");
+  }
 
-    function logout() {
+  return (
+    <>
+      <div
+        className="w-full bg-gradient-to-r from-purple-800 via-fuchsia-600 to-pink-400  text-white
+                flex justify-center py-8"
+      >
+        <div className="container flex justify-between text-lg">
+          <Link to="/home" className="text-2xl font-bold">
+            Blog Pessoal
+          </Link>
 
-        handleLogout()
-        alert('O Usuário foi desconectado com sucesso!')
-        navigate('/')
-    }
-    
-    return (
-        <>
-            <div className='w-full bg-indigo-900 text-white
-                flex justify-center py-4'>
-
-                <div className="container flex justify-between text-lg">
-                    <Link to='/home' className="text-2xl font-bold">Blog Pessoal</Link>
-
-                    <div className='flex gap-4'>
-                        Postagens
-                        Temas
-                        Cadastrar tema
-                        Perfil
-                        <Link to='' onClick={logout} className='hover:underline'>Sair</Link>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+          <div className="flex gap-6 text-white font-medium tracking-wide">
+            <Link
+              to="/postagens"
+              className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
+            >
+              Postagens
+            </Link>
+            <Link
+              to="/tema"
+              className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
+            >
+              Temas
+            </Link>
+            <Link
+              to="/cadastrarTema"
+              className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
+            >
+              Cadastrar tema
+            </Link>
+            <Link
+              to="/perfil"
+              className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
+            >
+              Perfil
+            </Link>
+            <Link
+              to=""
+              onClick={logout}
+              className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
+            >
+              Sair
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;

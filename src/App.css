@@ -1,0 +1,46 @@
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 3px rgba(139, 92, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px rgba(139, 92, 246, 1);
+  }
+}
+
+.animated-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.block {
+  animation: colorCycle 1.5s infinite ease-in-out;
+}
+
+.delay1 {
+  animation-delay: 0.2s;
+}
+
+.delay2 {
+  animation-delay: 0.4s;
+}
+
+.title-text {
+  margin-left: 0.5rem;
+  color: #6b21a8;
+}
+
+@keyframes colorCycle {
+  0%, 100% {
+    color: #22d3ee; 
+  }
+  33% {
+    color: #8b5cf6;
+  }
+  66% {
+    color: #ec4899;
+  }
+}
+
