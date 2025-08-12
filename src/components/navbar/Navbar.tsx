@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -9,7 +11,11 @@ function Navbar() {
 
   function logout() {
     handleLogout();
-    alert("O Usuário foi desconectado com sucesso!");
+    toast.success("O Usuário foi desconectado com sucesso!",
+      {
+        className: "my-toast-success"
+      }
+    );
     navigate("/");
   }
 
@@ -32,13 +38,13 @@ function Navbar() {
               Postagens
             </Link>
             <Link
-              to="/tema"
+              to="/temas"
               className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
             >
               Temas
             </Link>
             <Link
-              to="/cadastrarTema"
+              to="/cadastrartema"
               className="px-3 py-1 rounded hover:bg-white hover:text-purple-800 transition"
             >
               Cadastrar tema

@@ -1,62 +1,69 @@
 import { type ReactNode, createContext, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import type UsuarioLogin from "../models/UsuarioLogin";
 import { login } from "../services/Service";
+import "../ToastCustom.css";
 
 interface AuthContextProps {
-    usuario: UsuarioLogin
-    handleLogout(): void
-    handleLogin(usuario: UsuarioLogin): Promise<void>
-    isLoading: boolean
+  usuario: UsuarioLogin;
+  handleLogout(): void;
+  handleLogin(usuario: UsuarioLogin): Promise<void>;
+  isLoading: boolean;
 }
 
 interface AuthProvidersProps {
-    children: ReactNode
+  children: ReactNode;
 }
 
-export const AuthContext = createContext({} as AuthContextProps)
+export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProvidersProps) {
+  const [usuario, setUsuario] = useState<UsuarioLogin>({
+    id: 0,
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: "",
+    token: "",
+  });
 
-    const [usuario, setUsuario] = useState<UsuarioLogin>({
-        id: 0,
-        nome: '',
-        usuario: '',
-        senha: '',
-        foto: '',
-        token: ''
-    })
+  const [isLoading, setIsLoading] = useState(false);
 
-    const [isLoading, setIsLoading] = useState(false)
+  async function handleLogin(usuarioLogin: UsuarioLogin) {
+    setIsLoading(true);
 
-    async function handleLogin(usuarioLogin: UsuarioLogin) {
-        setIsLoading(true)
-
-        try {
-            await login(`/usuarios/logar`, usuarioLogin, setUsuario)
-            alert("O Usuário foi autenticado com sucesso!")
-        } catch (error) {
-            console.log(error)
-            alert("Os dados do Usuário estão inconsistentes!")
-        }
-
-        setIsLoading(false)
-        
+    try {
+      await login(`/usuarios/logar`, usuarioLogin, setUsuario);
+      toast.success("O Usuário foi autenticado com sucesso!", {
+        className: "my-toast-success",
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error("Os dados do Usuário estão inconsistentes!", {
+        className: "my-toast-error",
+      });
     }
 
-    function handleLogout() {
-        setUsuario({
-            id: 0,
-            nome: '',
-            usuario: '',
-            senha: '',
-            foto: '',
-            token: ''
-        })
-    }
+    setIsLoading(false);
+  }
 
-    return(
-        <AuthContext.Provider value={{ usuario, handleLogin, handleLogout, isLoading}}>
-            {children}
-        </AuthContext.Provider>
-    )
+  function handleLogout() {
+    setUsuario({
+      id: 0,
+      nome: "",
+      usuario: "",
+      senha: "",
+      foto: "",
+      token: "",
+    });
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{ usuario, handleLogin, handleLogout, isLoading }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
