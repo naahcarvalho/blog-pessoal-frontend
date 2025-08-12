@@ -1,7 +1,8 @@
 function Home() {
   return (
     <>
-      <div className="bg-rose-100 flex justify-center py-20">
+    <div className="bg-rose-100 min-h-screen flex flex-col">
+      <div className="flex justify-center pt-30">
         <div className="container grid grid-cols-2 text-white">
           <div className="flex flex-col gap-4 items-center justify-center py-4 text-center">
             <h2 className="animated-title">
@@ -39,6 +40,7 @@ function Home() {
             />
           </div>
         </div>
+      </div>
       </div>
     </>
   );
