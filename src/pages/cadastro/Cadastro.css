@@ -1,8 +1,50 @@
-.fundoCadastro {
-    background-image: url("https://i.imgur.com/ZZFAmzo.jpg");
-    background-repeat: no-repeat;
-    width: 100%;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+@keyframes pulse-sync {
+  0%, 100% {
+    opacity: 1;
+    color: #7c3aed;
   }
+  50% {
+    opacity: 0.6;
+    color: #a78bfa;
+  }
+}
+
+.animate-pulse-sync {
+  animation: pulse-sync 2s infinite;
+}
+
+  .glow-text {
+          text-shadow:
+            0 0 8px #8b5cf6,
+            0 0 12px #7c3aed,
+            0 0 16px #6d28d9;
+          animation: pulse-glow 2s infinite alternate;
+        }
+        @keyframes pulse-glow {
+          0% { text-shadow:
+            0 0 8px #8b5cf6,
+            0 0 12px #7c3aed,
+            0 0 16px #6d28d9;
+          }
+          100% { text-shadow:
+            0 0 16px #a78bfa,
+            0 0 24px #8b5cf6,
+            0 0 32px #7c3aed;
+          }
+        }
+       
+        .matrix-effect {
+          background: black;
+          opacity: 0.1;
+          pointer-events: none;
+          animation: matrix-fall 5s linear infinite;
+          background-image:
+            radial-gradient(#4ade80 2px, transparent 3px),
+            radial-gradient(#22d3ee 2px, transparent 3px);
+          background-size: 20px 20px;
+          background-position: 0 0, 10px 10px;
+        }
+        @keyframes matrix-fall {
+          0% { background-position: 0 0, 10px 10px; }
+          100% { background-position: 0 100%, 10px 110%; }
+        }

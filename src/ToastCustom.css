@@ -1,0 +1,17 @@
+.my-toast-success {
+  margin: 12px !important;
+  background: #6b21a8 !important;
+  color: white !important;
+}
+
+.my-toast-error {
+  margin: 12px !important;
+  background: #b91c1c !important;
+  color: white !important;
+}
+
+.my-toast-warn {
+  margin: 12px !important;
+  background: #d015e5 !important;
+  color: white !important;
+}
