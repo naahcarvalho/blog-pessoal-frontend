@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type UsuarioLogin from "../models/UsuarioLogin";
 import { login } from "../services/Service";
-import "../ToastCustom.css";
+import "../utils/ToastCustom.css";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;
