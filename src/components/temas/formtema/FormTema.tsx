@@ -16,7 +16,7 @@ function FormTema() {
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
-  const { id } = useParams<{ id: string }>();
+  const params = useParams<{ id: string }>();
 
   async function buscarPorId(id: string) {
     try {
@@ -47,10 +47,10 @@ function FormTema() {
   }, [token, navigate]);
 
   useEffect(() => {
-    if (id !== undefined) {
-      buscarPorId(id);
+    if (params.id) {
+      buscarPorId(params.id);
     }
-  }, [id]);
+  }, [params.id]);
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setTema({
