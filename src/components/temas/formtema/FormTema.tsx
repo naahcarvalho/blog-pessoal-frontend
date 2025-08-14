@@ -20,12 +20,11 @@ function FormTema() {
 
   async function buscarPorId(id: string) {
     try {
-      console.log("Token que será enviado:", `Bearer ${token}`);
       await buscar(`/temas`, setTema, {
         headers: { Authorization: token },
       });
     } catch (error: any) {
-      if (error.toString().includes("403")) {
+      if (error.toString().includes("401")) {
         handleLogout();
       }
     }
@@ -68,7 +67,7 @@ function FormTema() {
     setIsLoading(true);
 
     try {
-      if (id !== undefined) {
+      if (params.id !== undefined) {
         await atualizar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
@@ -93,7 +92,7 @@ function FormTema() {
         handleLogout();
       } else {
         toast.error(
-          id !== undefined
+          params.id !== undefined
             ? "Erro ao atualizar o tema."
             : "Erro ao cadastrar o tema.",
           {
@@ -108,7 +107,7 @@ function FormTema() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-start mx-auto pt-24 bg-rose-100">
       <h1 className="text-4xl text-center my-8 text-purple-700 font-bold">
-        {id === undefined ? "Cadastrar Tema" : "Editar Tema"}
+        {params.id === undefined ? "Cadastrar Tema" : "Editar Tema"}
       </h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
@@ -143,7 +142,7 @@ function FormTema() {
               visible={true}
             />
           ) : (
-            <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+            <span>{params.id === undefined ? "Cadastrar" : "Atualizar"}</span>
           )}
         </button>
       </form>
