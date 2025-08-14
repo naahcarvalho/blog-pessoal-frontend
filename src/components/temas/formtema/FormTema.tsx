@@ -18,7 +18,7 @@ function FormTema() {
 
   const params = useParams<{ id: string }>();
 
-  async function buscarPorId(id: string) {
+  async function buscarPorId(_id: string) {
     try {
       await buscar(`/temas`, setTema, {
         headers: { Authorization: token },
