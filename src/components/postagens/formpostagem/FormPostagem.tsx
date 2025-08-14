@@ -24,7 +24,7 @@ function FormPostagem() {
 
   async function buscarPostagemPorId(id: string) {
     try {
-      await buscar(`/postagens`, setPostagem, {
+      await buscar(`/postagens/${id}`, setPostagem, {
         headers: { Authorization: usuario.token },
       });
     } catch (error: any) {
