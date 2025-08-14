@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import consultar from '../../../services/Service';
+import { buscar } from "../../../services/Service";
 
 interface Usuario {
   id: number;
@@ -11,13 +11,11 @@ function ListarUsuarios() {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
   async function consultarUsuarios() {
-
     try {
-      await consultar('/users', setUsuarios);
+      await buscar('/users', setUsuarios, {}); 
     } catch (error: any) {
-      alert('Erro!')
+      alert('Erro!');
     }
-    
   }
 
   useEffect(() => {
@@ -28,7 +26,7 @@ function ListarUsuarios() {
     <div className='lista'>
       <h1>Lista de usuários - Gerada pelo Axios</h1>
       <ul>
-        {usuarios.map( (usuario) => (
+        {usuarios.map((usuario) => (
           <li key={usuario.id}>{usuario.name}</li>
         ))}
       </ul>
