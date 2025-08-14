@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
-import "../../ToastCustom.css";
+import "../../utils/ToastCustom.css";
 import "./Cadastro.css";
 
 function Cadastro() {
