@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.capa-perfil {
+  background-image: var(
+    --capa-url,
+    url("https://images.template.net/376680/Neon-Gaming-Background-edit-online-1.jpg")
+  );
+}

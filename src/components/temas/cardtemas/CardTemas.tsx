@@ -24,12 +24,12 @@ function CardTema({ tema }: CardTemasProps) {
           Editar
         </Link>
 
-        <button
+        <Link
+          to={`/deletartema/${tema.id}`}
           className="p-2 rounded-md bg-purple-900 hover:bg-purple-800 transition-colors duration-300 cursor-pointer text-purple-300 flex items-center justify-center"
-          onClick={() => alert("Implementar lógica para deletar o tema aqui")}
         >
           <Trash2 className="w-5 h-5" />
-        </button>
+        </Link>
       </div>
     </div>
   );
